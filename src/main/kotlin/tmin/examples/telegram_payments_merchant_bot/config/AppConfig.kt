@@ -1,0 +1,9 @@
+package tmin.examples.telegram_payments_merchant_bot.config
+
+import org.springframework.boot.context.properties.EnableConfigurationProperties
+import org.springframework.context.annotation.Configuration
+import tmin.examples.telegram_payments_merchant_bot.config.properties.TokenProperties
+
+@Configuration
+@EnableConfigurationProperties(TokenProperties::class)
+class AppConfig

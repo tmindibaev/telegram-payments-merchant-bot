@@ -1,4 +1,4 @@
-package tmin.examples.telegram_payments_merchant_bot
+package tmin.examples.telegram_payments_merchant_bot.bot
 
 import com.github.kotlintelegrambot.bot
 import com.github.kotlintelegrambot.dispatch
@@ -9,16 +9,19 @@ import com.github.kotlintelegrambot.entities.ChatId
 import com.github.kotlintelegrambot.entities.payments.LabeledPrice
 import com.github.kotlintelegrambot.entities.payments.PaymentInvoiceInfo
 import org.springframework.stereotype.Component
+import tmin.examples.telegram_payments_merchant_bot.config.properties.TokenProperties
 import java.math.BigInteger
 import java.util.logging.Logger
 
 @Component
-class BotStarter {
+class BotStarter(
+    private val tokenProperties: TokenProperties
+) {
 
     init {
         val bot = bot {
 
-            token = "my bot token"
+            token = tokenProperties.botToken
 
             dispatch {
                 text {
@@ -37,7 +40,7 @@ class BotStarter {
                             title = "Тестовый платёж",
                             description = "Описание",
                             payload = "internal payload",
-                            providerToken = "my provider payment token",
+                            providerToken = tokenProperties.testProviderToken,
                             startParameter = "startParameter",
                             currency = "USD",
                             prices = listOf(LabeledPrice(label = "Three hundred bucks", amount = BigInteger.valueOf(30000)))
