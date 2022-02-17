@@ -42,8 +42,8 @@ class BotStarter(
                             payload = "internal payload",
                             providerToken = tokenProperties.testProviderToken,
                             startParameter = "startParameter",
-                            currency = "USD",
-                            prices = listOf(LabeledPrice(label = "Three hundred bucks", amount = BigInteger.valueOf(30000)))
+                            currency = "RUB",
+                            prices = listOf(LabeledPrice(label = "Three hundred bucks", amount = BigInteger.valueOf(100)))
                         )
                     )
                     logger.info("Got response from telegram: $response")
